@@ -30,4 +30,3 @@ CREATE TABLE `tb_board` (
   `image` VARCHAR(255) NULL,
   PRIMARY KEY (`idx`));
   ```
-# SBDC-boardMission
