@@ -140,8 +140,9 @@ CREATE TABLE `tb_board` (
 		FROM
 			board
 		WHERE
-			state = 'T';
-		ORDER BY idx desc
+			status = 'T'
+		limit 5
+		
 	</select>
 	
 		<select id="getSaveBoard" resultType="com.web.domain.Board">
@@ -152,8 +153,9 @@ CREATE TABLE `tb_board` (
 		FROM
 			board
 		WHERE
-			state = 'S';
-		ORDER BY idx desc
+			status = 'C'
+		limit 5
+		
 	</select>
 	
 		<select id="getDeleteBoard" resultType="com.web.domain.Board">
@@ -164,7 +166,8 @@ CREATE TABLE `tb_board` (
 		FROM
 			board
 		WHERE
-			state = 'D';
-		ORDER BY idx desc
+			status = 'D'
+		limit 5
+		
 	</select>
 </mapper>

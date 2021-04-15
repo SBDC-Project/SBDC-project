@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -180,13 +181,17 @@ public class IndexController {
 		}
 
 	 @RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-		@ResponseBody
-		public List<Board> dashBoard() {
-		 
-//		 	List<Board> tempBoard = s.getTempBoard();
-//		 	List<Board> saveBoard = s.getSaveBoard();
-//		 	List<Board> deleteBoard = s.getDeleteBoard();
-			return s.getTempBoard();
+		@ResponseBody	
+		public HashMap<String,List<Board>> dashBoard() {
+		  HashMap<String,List<Board>> map = new HashMap<String,List<Board>>();
+		 	List<Board> tempBoard = s.getTempBoard();
+		 	List<Board> saveBoard = s.getSaveBoard();
+		 	List<Board> deleteBoard = s.getDeleteBoard();
+		 	map.put("temp", tempBoard);
+		 	map.put("save", saveBoard);
+		 	map.put("del", deleteBoard);
+		 	
+			return map;
 		}
 
 	

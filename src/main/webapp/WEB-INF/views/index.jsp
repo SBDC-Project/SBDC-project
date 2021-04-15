@@ -185,18 +185,30 @@ ul#menu {
 					location.href = "write";
 				})
 				$.ajax({
-					url : "boardList",
+					url : "dashBoard",
 					success : function(result) {
 						console.log(result);
-						var html = "";
-						result.forEach(function(item) {
-							html += "<tr> <td><a href = 'view?idx=" + item.idx
+						var tempHtml = "";
+						var saveHtml = "";
+						var deleteHtml = "";
+						result.temp.forEach(function(item) {
+							tempHtml += "<tr> <td><a href = 'view?idx=" + item.idx
 									+ "'>" + item.title + "</a>" + "</td>"
 									+ "<td>" + item.writer + "</td></tr>"
 						})
-						$("#listArea1").append(html);
-						$("#listArea2").append(html);
-						$("#listArea3").append(html);
+						result.del.forEach(function(item) {
+							saveHtml += "<tr> <td><a href = 'view?idx=" + item.idx
+									+ "'>" + item.title + "</a>" + "</td>"
+									+ "<td>" + item.writer + "</td></tr>"
+						})
+						result.save.forEach(function(item) {
+							deleteHtml += "<tr> <td><a href = 'view?idx=" + item.idx
+									+ "'>" + item.title + "</a>" + "</td>"
+									+ "<td>" + item.writer + "</td></tr>"
+						})
+						$("#listArea1").append(tempHtml);
+						$("#listArea2").append(saveHtml);
+						$("#listArea3").append(deleteHtml);
 						$('#example').DataTable();
 					}
 				});
